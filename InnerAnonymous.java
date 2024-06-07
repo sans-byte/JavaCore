@@ -5,6 +5,11 @@ class SomeClass{
     }
 }
 
+abstract class SomeOtherClass{
+    abstract public void someMethod();
+    abstract public void someOtherMethod();
+}
+
 public class InnerAnonymous {
 
     public static void main(String[] args) {
@@ -15,5 +20,17 @@ public class InnerAnonymous {
         };
     
         s.show();
+
+
+        SomeOtherClass s1 = new SomeOtherClass() {
+
+            public void someMethod() {
+                System.out.println("Some Abstract Method");
+            }
+
+            public void someOtherMethod() {
+                System.out.println("Some Other Abstract Method");
+            }
+        };
     }
 }
