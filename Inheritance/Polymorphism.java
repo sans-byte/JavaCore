@@ -1,3 +1,4 @@
+package Inheritance;
 //Polymorphism -> poly-> many morphism ->behaviours
 // Two Types
 // Compile Time -> Method Overloading

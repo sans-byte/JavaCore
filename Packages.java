@@ -8,6 +8,6 @@
 // tools.sometool.*         // as * only import all files in current folder not all folders
 
 
-public class Packeges {
+public class Packages {
     
 }
