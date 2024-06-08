@@ -20,6 +20,8 @@ class B implements A {             // implements only give you the methods of th
 
 public class MoreOnInterfaces {
     public static void main(String[] args) {
+        System.out.println(A.age);
+        System.out.println(A.name);
         A obj;
         obj = new B();
         obj.show();
