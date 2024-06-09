@@ -10,6 +10,8 @@ public class ExceptionHandling {
             System.out.println("Something went wrong...");
             System.out.println(e);
         }
+
+        System.out.println("It does not stop the execution");
     }
 
 }
