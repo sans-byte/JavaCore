@@ -1,5 +1,13 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
 class ArraysInJava {
 
+    //When we define an array the default values of interger array is 0
+    // Default values in String array is null
+    // Null is a special literal that cannot be assigned to premitives 
+    // String str = null 
+    // int i = null; error
     public static void main(String[] args) {
         // different ways to initialize arrays
         // we have to either provide the size of the array or initialize it with some
@@ -42,7 +50,7 @@ class ArraysInJava {
         int[][] jagged = new int[3][];
         jagged[0] = new int[2];
         jagged[1] = new int[3];
-        jagged[3] = new int[4];
+        jagged[2] = new int[4];
 
         /////////////////
 
@@ -74,6 +82,21 @@ class ArraysInJava {
         int[][][] array3d = new int[3][4][5];
 
         array3d[0][0][2] = 5;
+
+
+
+        // ways to print array
+        // Have already seen for loop and for each loop
+
+        Scanner sc = new Scanner(System.in);
+        int[] arrnew = new int[5];
+        for(int i=0;i<arrnew.length;i++){
+            arrnew[i] = sc.nextInt();
+        }
+
+        System.out.println(Arrays.toString(arrnew)); //this will print the array
     }
+
+
 
 }
