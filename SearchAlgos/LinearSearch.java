@@ -10,7 +10,6 @@ public class LinearSearch {
         arr.add(26);
         arr.add(9);
         arr.add(3);
-        System.out.println(linearSearch(arr, 9));
     }
     //Time complexity worst - O(n)
     
