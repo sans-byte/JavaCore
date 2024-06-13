@@ -6,8 +6,10 @@ package BinarySearch;
 // find the pivot( basically the largest value in the array ) and apply binary search in left and 
 // righ array start to pivot and pivot to end
 // ** How to find the pivot element **
-//
-//
+// if some element is greater that it's next that thats the pivot
+// or if an element is smaller than its pre then pre is pivot element
+// now for the conditions to fall into above two statents we need to decrease the window
+// we can do that by below conditions
 // if(arr[start] <= arr[mid]) then all the elements after mid are smaller than start to discard 
 // those start = mid
 // else if(arr[start] > arr[mid]) then all the elements before mid are smaller than it so 
