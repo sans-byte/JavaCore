@@ -23,9 +23,11 @@ public class SearchInRotatedSortedArray {
         if (pivot == -1)
             System.out.println(binarySearch(arr, 0, arr.length - 1, target));
         else {
-            int value1 = binarySearch(arr, 0, pivot, target);
-            if (value1 != -1)
-                System.out.println(value1);
+            if(arr[pivot] >= arr[0]){
+                int value1 = binarySearch(arr, 0, pivot, target);
+                if (value1 != -1)
+                    System.out.println(value1);
+            }
             int value2 = binarySearch(arr, pivot+1, arr.length - 1, target);
             System.out.println(value2);
         }
