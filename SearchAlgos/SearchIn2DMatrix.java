@@ -1,4 +1,4 @@
-package BinarySearch;
+package SearchAlgos;
 
 //Given the condition that the array is sorted
 public class SearchIn2DMatrix {
