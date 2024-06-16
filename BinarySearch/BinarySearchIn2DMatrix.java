@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // The intution here is to apply the same binary search we do on normal array
 // but play with index like 5 index in straight array in a 2d array of n * m will be
-// 5 / m = x; 5 % m = y
+// 5 / m = x; 5 % m = y This will provide x and y index of the element in 2d array
 
 public class BinarySearchIn2DMatrix {
     public static void main(String[] args) {
