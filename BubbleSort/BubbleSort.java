@@ -2,7 +2,7 @@ package BubbleSort;
 
 import java.util.Arrays;
 
-
+// Time Best Case = O(N) Worst Case = O(N2)
 //AKA sinking sort and exchange sort
 
 public class BubbleSort {
