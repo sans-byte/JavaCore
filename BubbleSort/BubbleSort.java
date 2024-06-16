@@ -2,6 +2,9 @@ package BubbleSort;
 
 import java.util.Arrays;
 
+
+//AKA sinking sort and exchange sort
+
 public class BubbleSort {
     public static void main(String[] args) {
         int[] arr = { 3, 5, 6, 1, 9, 7, 12, 14, 15, 11, 25, 22, 24 };
