@@ -1,3 +1,4 @@
+package Strings;
 public class Strings {
     public static void main(String[] args) {
         String n = "sanskar";
@@ -35,6 +36,14 @@ public class Strings {
         s1 = s1 + "Jain";
         System.out.println(s1);
         System.out.println(s1.hashCode()); // prints address
+
+        String name1 = new String("sanskar");
+        String name2 = new String("sanskar");
+
+        System.out.println(name1 == name2);  // False coz they are different memory in heap now
+
+        //but if we use equals functionb
+        System.out.println(name1.equals(name2)); // Give true
 
 
         // TO use mutable strings we use something known as 
