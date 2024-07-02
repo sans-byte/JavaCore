@@ -90,3 +90,6 @@ public class ValidSuduko {
         return true;
     }
 }
+
+
+// Have to study this question again and know a better short approach
