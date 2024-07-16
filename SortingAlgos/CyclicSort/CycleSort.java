@@ -1,4 +1,4 @@
-package CyclicSort;
+package SortingAlgos.CyclicSort;
 
 import java.util.Arrays;
 
