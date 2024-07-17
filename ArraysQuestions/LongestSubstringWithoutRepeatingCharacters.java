@@ -40,9 +40,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 l = map.get(s.charAt(r)) + 1;
             }
             map.put(s.charAt(r), r);
-            System.out.println(map);
-            System.out.println(r);
-            System.out.println(l);
             length = Math.max(length, r - l + 1);
             r++;
         }
