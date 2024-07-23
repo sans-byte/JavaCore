@@ -20,6 +20,8 @@ public class ThreeSum {
     // Which will give you all the 3sums
     // Below is easy to underatand function wise implementation of it
 
+    // The time complexity for 3 sum will be around n^2
+
     static List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         Set<List<Integer>> res = new HashSet<>();
