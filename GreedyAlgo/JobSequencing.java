@@ -1,6 +1,9 @@
 package GreedyAlgo;
 
 import java.util.Arrays;
+import java.util.Comparator;
+
+// https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
 
 class Job {
     int id;
@@ -31,8 +34,31 @@ public class JobSequencing {
     }
 
     static int[] JobScheduling(Job arr[], int n) {
-        
-        return null;
+        int maxDeadLine = 0;
+        for (int i = 0; i < arr.length; i++) {
+            maxDeadLine = Math.max(maxDeadLine, arr[i].deadline);
+        }
+        Arrays.sort(arr, new Comparator<Job>() {
+            public int compare(Job a, Job b) {
+                return Integer.compare(b.profit, a.profit);
+            }
+        });
+        int[] deadlineArr = new int[maxDeadLine + 1];
+        int totalProfit = 0;
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int x = arr[i].deadline;
+            while (x > 0) {
+                if (deadlineArr[x] == 0) {
+                    deadlineArr[x] = 1;
+                    totalProfit += arr[i].profit;
+                    count++;
+                    break;
+                } else {
+                    x--;
+                }
+            }
+        }
+        return new int[] { count, totalProfit };
     }
-
 }
