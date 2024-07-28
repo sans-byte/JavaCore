@@ -39,7 +39,7 @@ public class NMeetingsInOneRoom {
             }
         });
 
-        int endTime = -1;
+        int endTime = Integer.MIN_VALUE;
         List<Integer> meetings = new ArrayList<>();
 
         for (int i = 0; i < combined.length; i++) {
