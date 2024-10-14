@@ -29,10 +29,11 @@ public class ThreeSum {
         for (int i = 0; i < nums.length; i++) {
             List<List<Integer>> twoSums = twoSum(nums, i + 1, nums[i]);
             if (twoSums.size() > 0) {
-                for (List<Integer> sums : twoSums) {
-                    sums.add(0, nums[i]);
-                    res.add(sums);
-                }
+                // for (List<Integer> sums : twoSums) {
+                //     sums.add(0, nums[i]);
+                //     res.add(sums);
+                // }
+                res.addAll(twoSums);
             }
         }
         for (List<Integer> i : res) {
@@ -52,6 +53,7 @@ public class ThreeSum {
                 List<Integer> result = new ArrayList<>();
                 result.add(numbers[i]);
                 result.add(numbers[j]);
+                result.add(sum);
                 res.add(result);
             }
             if (targetSum > 0)
