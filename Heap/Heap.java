@@ -1,5 +1,6 @@
 package Heap;
 
+import java.util.PriorityQueue;
 
 /*
  * Array repersentation of BT
@@ -23,5 +24,25 @@ package Heap;
  */
 
 public class Heap {
-    
+    public static void main(String[] args) {
+        // PriorityQueue<Integer> p = new PriorityQueue<>(); // By default it is a min
+        // heap
+        PriorityQueue<Integer> p = new PriorityQueue<>((x, y) -> y - x); // To create Max heap
+        p.add(2);
+        p.add(6);
+        p.add(8);
+        p.add(3);
+        p.add(9);
+        System.out.println(p.poll()); // poll() will remove the uppermost element i.e minimun in min heap and max in
+                                      // maxheap
+        System.out.println(p.poll());
+        System.out.println(p.poll());
+        System.out.println(p.remove(2)); // if used without any argument then will work like poll and return the element
+                                         // if specified an element then it will return boolean depending on if the
+                                         // element was present or not
+        System.out.println(p.size()); // will give the size
+        System.out.println(p.offer(10)); // will work same as add and return boolen
+        System.out.println(p.size()); // will give the size
+
+    }
 }
