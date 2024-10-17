@@ -33,6 +33,8 @@ public class Heap {
         p.add(8);
         p.add(3);
         p.add(9);
+
+        System.out.println(p.peek());
         System.out.println(p.poll()); // poll() will remove the uppermost element i.e minimun in min heap and max in
                                       // maxheap
         System.out.println(p.poll());
