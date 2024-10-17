@@ -69,7 +69,7 @@ public class Strings {
         //System.out.println(s); // Sanskar Hello world Jain
 
         //String buffer and String builder has  only one difference that
-        // String buffer is threas safe and string builder is not
+        // String buffer is thread safe and string builder is not
     }
 
 }
