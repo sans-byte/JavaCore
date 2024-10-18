@@ -1,7 +1,9 @@
-package Strings;
+package Recursion;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// here we are learning how to create all subsets in an array
 
 // We are going to use here the concept of power set
 
@@ -11,13 +13,13 @@ public class PrintAllSubstrings {
         String str = "abc";
         List<Character> resStr = new ArrayList<>();
         // printSubstrings(str);
-        // printAllSubstrWithRecursion(str, 0, resStr);
+        printAllSubstrWithRecursion(str, 0, resStr);
 
         int[] nums = { 1, 2, 3 };
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> resStrInt = new ArrayList<>();
-        printAllSubstrWithRecursionInt(nums, 0, resStrInt, res);
-        System.out.println(res);
+        // printAllSubstrWithRecursionInt(nums, 0, resStrInt, res);
+        // System.out.println(res);
     }
 
     static void printSubstrings(String str) {
