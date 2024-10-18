@@ -3,6 +3,8 @@ package LeetOct;
 import java.util.List;
 import java.util.ArrayList;
 
+// https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/description/?envType=daily-question&envId=2024-10-18
+
 public class CountNumberOfMaxXORSubsets {
     public static void main(String[] args) {
         int nums[] = { 3, 2, 1, 5 };
