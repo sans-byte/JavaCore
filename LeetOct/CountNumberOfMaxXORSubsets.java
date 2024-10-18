@@ -5,14 +5,46 @@ import java.util.ArrayList;
 
 // https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/description/?envType=daily-question&envId=2024-10-18
 
+// When we are asked to compute the maximum bitwise OR of subsets and count how many subsets achieve this maximum, the problem essentially boils down to finding the largest possible OR value. Since OR operations are cumulative (meaning that once a bit is set, it stays set), the more elements we include in a subset, the closer we get to the maximum possible OR
+
+// So the or of all the elements in an array will be the largest or an array elemnts could achieve 
+
 public class CountNumberOfMaxXORSubsets {
     public static void main(String[] args) {
         int nums[] = { 3, 2, 1, 5 };
+        System.out.println(countMAX(nums));
         // System.out.println(countMaxOrSubsets(nums));
 
-        List<List<Integer>> l = new ArrayList<>();
-        List<Integer> res = new ArrayList<>();
-        getPowerSetWithRecursion(0, nums, l, res);
+        // below code is just to play with creating power set ignore for quetion
+        // List<List<Integer>> l = new ArrayList<>();
+        // List<Integer> res = new ArrayList<>();
+        // getPowerSetWithRecursion(0, nums, l, res);
+    }
+
+    static public int countMAX(int[] nums) {
+        int count = 0;
+        // Calculate the max or ( just or all the elements )
+        int maxOr = 0;
+        for (int i : nums) {
+            maxOr |= i;
+        }
+        // calculate power set and increase count
+
+        int maxLengthOfPowerSet = (int) Math.pow(2, nums.length);
+        for (int i = 0; i < maxLengthOfPowerSet; i++) {
+            int x = 0;
+            int or = 0;
+            while (x < nums.length) {
+                if ((i & (1 << x)) != 0) {
+                    or |= nums[x];
+                }
+                x++;
+            }
+            if (or == maxOr) {
+                count++;
+            }
+        }
+        return count;
     }
 
     static public int countMaxOrSubsets(int[] nums) {
