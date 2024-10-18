@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class CountNumberOfMaxXORSubsets {
     public static void main(String[] args) {
         int nums[] = { 3, 2, 1, 5 };
-        System.out.println(countMAX(nums));
+        System.out.println(countNumberWithBacktracking(nums));
+        // System.out.println(countMAX(nums));
         // System.out.println(countMaxOrSubsets(nums));
 
         // below code is just to play with creating power set ignore for quetion
@@ -103,4 +104,43 @@ public class CountNumberOfMaxXORSubsets {
         res.remove(res.size() - 1);
         getPowerSetWithRecursion(i + 1, nums, result, res);
     }
+
+    static public int countNumberWithBacktracking(int[] nums) {
+        int maxOr = 0;
+        for (int i : nums) {
+            maxOr |= i;
+        }
+        int[] count = new int[1];
+        // we need to exclude and include one elemnet at each recursion call to get all
+        // the subsets and need to check if that it equal to the maxOr
+        backTracking(nums, 0, 0, count, maxOr);
+        return count[0];
+    }
+
+    static public void backTracking(int[] nums, int index, int or, int[] count, int maxOr) {
+        if (index == nums.length) {
+            if (maxOr == or) {
+                count[0]++;
+            }
+            return;
+        }
+        // excluding
+        backTracking(nums, index + 1, or, count, maxOr);
+        // including
+        backTracking(nums, index + 1, or | nums[index], count, maxOr);
+    }
+
+    // the upper function can also be written as - 
+    // static public void backTracking(int[] nums, int index, int or, int[] count, int maxOr) {
+    //     if (maxOr == or) {
+    //         count[0]++;
+    //         return;
+    //     }
+    //     // excluding will be handled by for loop as it internally goes to the next element without considering it
+    //     for(int i = index; i < nums.length; i++){
+    //         // including
+    //         backTracking(nums, i + 1, or | nums[i], count, maxOr);
+    //     }
+    // }
+
 }
