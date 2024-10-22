@@ -52,11 +52,11 @@ public class TreeNode {
 
             for (int i = 0; i < levelSize; i++) {
                 TreeNode tempNode = q.poll();
-                if (tempNode.right != null)
-                    q.add(tempNode.right);
-
                 if (tempNode.left != null)
                     q.add(tempNode.left);
+
+                if (tempNode.right != null)
+                    q.add(tempNode.right);
 
                 temp.add(tempNode.val);
             }
