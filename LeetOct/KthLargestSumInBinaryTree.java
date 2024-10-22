@@ -100,6 +100,5 @@ public class KthLargestSumInBinaryTree {
         List<Long> res = levelOrderSum(n);
         res.sort(null);
         System.out.println(res);
-        int val = Integer.Ma
     }
 }
