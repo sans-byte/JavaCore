@@ -34,16 +34,32 @@ public class TreeNode {
         if (n == null)
             return;
 
-        System.out.println(n.val);
         postOrder(n.left);
         postOrder(n.right);
+        System.out.print(n.val + " ");
+    }
+
+    public static void preOrder(TreeNode n) {
+        if (n == null)
+            return;
+
+        System.out.print(n.val + " ");
+        preOrder(n.left);
+        preOrder(n.right);
+    }
+
+    public static void inOrder(TreeNode n) {
+        if (n == null)
+            return;
+        inOrder(n.left);
+        System.out.print(n.val + " ");
+        inOrder(n.right);
     }
 
     public static List<List<Integer>> levelOrder(TreeNode n) {
         List<List<Integer>> res = new ArrayList<>();
         if (n == null)
             return res;
-
         Queue<TreeNode> q = new LinkedList<>();
         q.add(n);
         while (!q.isEmpty()) {
