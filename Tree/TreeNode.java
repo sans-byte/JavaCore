@@ -21,7 +21,7 @@ public class TreeNode {
     }
 
     public static TreeNode createTree(int[] vals, int i) {
-        if (i >= vals.length)
+        if (i >= vals.length || vals[i] == 0)
             return null;
 
         TreeNode root = new TreeNode(vals[i]);
