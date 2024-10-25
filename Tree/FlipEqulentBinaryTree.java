@@ -12,63 +12,18 @@ public class FlipEqulentBinaryTree {
     }
 
     public static boolean flipEquiv(TreeNode root1, TreeNode root2) {
-        Queue<TreeNode> q1 = new LinkedList<>();
-        Queue<TreeNode> q2 = new LinkedList<>();
-        if (root1.val != root2.val)
-            return false;
-        q1.add(root1);
-        q2.add(root2);
-        while (!q1.isEmpty() && !q2.isEmpty()) {
-            TreeNode temp1 = q1.poll();
-            TreeNode temp2 = q2.poll();
+        return checker(root1, root2);
+    }
 
-            System.out.println(temp1.val);
-            System.out.println(temp2.val);
-            if (temp1.val != temp2.val) {
-                return false;
-            }
-
-            if ((temp1.left != null && temp2.left != null) && (temp1.right != null && temp2.right != null)) {
-                if (temp1.left.val == temp2.left.val && temp1.right.val == temp2.right.val) {
-                } else if (temp1.left.val == temp2.right.val && temp1.right.val == temp2.left.val) {
-                    TreeNode node = temp1.left;
-                    temp1.left = temp1.right;
-                    temp1.right = node;
-                } else {
-                    return false;
-                }
-            }
-
-            if (((temp1.left != null && temp1.right == null)
-                    || (temp1.right != null && temp1.left == null))
-                    && ((temp2.left != null && temp2.right == null)
-                            || (temp2.right != null && temp2.left == null))) {
-                int temp1ChildValue = temp1.left != null ? temp1.left.val : temp1.right.val;
-                int temp2ChildValue = temp2.left != null ? temp2.left.val : temp2.right.val;
-                if (temp1ChildValue != temp2ChildValue) {
-                    return false;
-                }
-
-                if ((temp1.left != null && temp2.right != null) || (temp1.right != null && temp2.left != null)) {
-                    temp1.left = temp1.right;
-                    temp1.right = null;
-                }
-            }
-
-            if (temp1.left != null)
-                q1.add(temp1.left);
-            if (temp1.right != null)
-                q1.add(temp1.right);
-
-            if (temp2.left != null)
-                q2.add(temp2.left);
-            if (temp2.right != null)
-                q2.add(temp2.right);
-
+    public static boolean checker(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) {
+            return true;
         }
-        if (q1.size() > 0 || q2.size() > 0) {
+        if (node1 == null || node2 == null || node1.val != node2.val) {
             return false;
         }
-        return true;
+
+        return (((checker(node1.left, node2.left)) || (checker(node1.left, node2.right)))
+                && (checker(node1.right, node2.left) || checker(node1.right, node2.right)));
     }
 }
