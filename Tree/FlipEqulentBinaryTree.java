@@ -50,8 +50,14 @@ public class FlipEqulentBinaryTree {
                 }
 
                 if ((temp1.left != null && temp2.right != null) || (temp1.right != null && temp2.left != null)) {
-                    temp1.left = temp1.right;
-                    temp1.right = null;
+                    if (temp1.right != null) {
+                        temp1.left = temp1.right;
+                        temp1.right = null;
+                    }
+                    if (temp1.left != null) {
+                        temp1.right = temp1.left;
+                        temp1.left = null;
+                    }
                 }
             }
 
