@@ -13,7 +13,7 @@ public class MostBeautifulItemForEachQuery {
     }
 
     public static int[] maximumBeauty(int[][] items, int[] queries) {
-        Arrays.sort(items, (x, y) -> Integer.compare(x[0], y[0]));
+        Arrays.sort(items, Comparator.comparing(x -> x[0]));
         Arrays.sort(items, (x, y) -> x[0] - y[0]);
 
         for (int i = 1; i < items.length; i++) {
