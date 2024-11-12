@@ -15,7 +15,7 @@ public class MostBeautifulItemForEachQuery {
     public static int[] maximumBeauty(int[][] items, int[] queries) {
         Arrays.sort(items, new Comparator<int[]>() {
             public int compare(int[] x, int[] y) {
-                return x[0] - y[0];
+                return Integer.compare(x[0], y[0]);
             }
         });
         Arrays.sort(items, (x, y) -> x[0] - y[0]);
