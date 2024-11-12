@@ -13,27 +13,51 @@ public class MostBeautifulItemForEachQuery {
     }
 
     public static int[] maximumBeauty(int[][] items, int[] queries) {
-        Arrays.sort(items, Comparator.comparing(x -> x[0]));
-        for (int i = 1; i < items.length; i++) {
-            items[i][1] = Math.max(items[i][1], items[i - 1][1]);
-        }
+        Arrays.sort(items, Comparator.comparingInt(x -> x[0]));
+        // for (int i = 1; i < items.length; i++) {
+        // items[i][1] = Math.max(items[i][1], items[i - 1][1]);
+        // }
+
+        // int res[] = new int[queries.length];
+        // for (int i = 0; i < queries.length; i++) {
+        // int s = 0;
+        // int e = items.length - 1;
+        // int max = 0;
+        // while (s <= e) {
+        // int mid = s + (e - s) / 2;
+        // if (items[mid][0] <= queries[i]) {
+        // max = Math.max(max, items[mid][1]);
+        // s = mid + 1;
+        // } else {
+        // e = mid - 1;
+        // }
+        // }
+        // res[i] = max;
+        // }
+        // return res;
+
+        // Second Approach
 
         int res[] = new int[queries.length];
+        int que[][] = new int[queries.length][2];
+
         for (int i = 0; i < queries.length; i++) {
-            int s = 0;
-            int e = items.length - 1;
-            int max = 0;
-            while (s <= e) {
-                int mid = s + (e - s) / 2;
-                if (items[mid][0] <= queries[i]) {
-                    max = Math.max(max, items[mid][1]);
-                    s = mid + 1;
-                } else {
-                    e = mid - 1;
-                }
-            }
-            res[i] = max;
+            que[i][0] = queries[i];
+            que[i][1] = i;
         }
+        Arrays.sort(que, Comparator.comparingInt(x -> x[0]));
+        int max = 0;
+        int i = 0;
+        for (int x = 0; x < queries.length; x++) {
+            int query = que[x][0];
+            int index = que[x][1];
+            while (i < items.length && items[i][0] <= query) {
+                max = Math.max(max, items[i][1]);
+                i++;
+            }
+            res[index] = max;
+        }
+
         return res;
     }
 }
