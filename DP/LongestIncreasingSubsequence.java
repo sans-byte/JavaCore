@@ -6,6 +6,8 @@ public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int nums[] = { 10, 9, 2, 5, 3, 7, 101, 18 };
         System.out.println(lengthOfLIS(nums));
+        System.out.println(lengthOfLISBetter(nums));
+        System.out.println(lengthOfLISBest(nums));
     }
 
     // public static void powerSetWithCondition(int[] nums, int pre, int i, int
@@ -53,4 +55,52 @@ public class LongestIncreasingSubsequence {
         return maxCount;
 
     }
+
+    // Above approach is of 2^n time complexity which is really bad
+
+    // Easy way to optimise it to n^2
+
+    public static int lengthOfLISBetter(int[] nums) {
+        int lis[] = new int[nums.length];
+        Arrays.fill(lis, 1);
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    lis[i] = Math.max(lis[i], lis[j] + 1);
+                }
+            }
+        }
+        int val = Arrays.stream(lis).max().getAsInt();
+        return val;
+    }
+
+    // we can further optimise it with binary search to nlogn time
+
+    public static int lowerBound(int[] nums, int target) { // if element found then will give element if not then will
+                                                           // give element just greater
+        int val = Arrays.binarySearch(nums, target);
+        if (val > 0) {
+            return val;
+        }
+        return -val - 1;
+    }
+
+    //TODO:Complete this logic this is not working
+
+    public static int lengthOfLISBest(int[] nums) {
+        int temp[] = new int[nums.length];
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int idx = lowerBound(temp, nums[i]);
+            if (idx > index) {
+                temp[index] = nums[i];
+                index++;
+            } else {
+                temp[idx] = nums[i];
+            }
+        }
+        System.out.println(Arrays.toString(temp));
+        return 0;
+    }
+
 }
