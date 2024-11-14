@@ -1,6 +1,7 @@
 package LeetOct;
 
 // 2064. Minimized Maximum of Products Distributed to Any Store
+// 875. Koko Eating Bananas -- like
 
 public class MinimizeMaximumOfProductsDistributedToAnyStore {
     public static void main(String[] args) {
