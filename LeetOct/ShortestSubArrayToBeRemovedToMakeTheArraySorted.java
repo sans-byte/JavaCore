@@ -12,19 +12,19 @@ public class ShortestSubArrayToBeRemovedToMakeTheArraySorted {
 
     public static int findLengthOfShortestSubarray(int[] arr) {
         int i = 0, j = arr.length - 1, maxCount = 1;
-        while (arr[i + 1] > arr[i]) {
+        while (i < arr.length - 2 && arr[i + 1] >= arr[i]) {
             i++;
         }
-        while (arr[j - 1] < arr[j]) {
+        while (j >= 1 && arr[j - 1] <= arr[j]) {
             j--;
         }
         maxCount = Math.max(i + 1, arr.length - j);
-        while (arr[i] > arr[j]) {
+        while (i >= 0 && (i == j || arr[i] > arr[j])) {
             i--;
         }
+
         int val = i + 1 + arr.length - j;
         maxCount = Math.max(maxCount, val);
-        System.out.println(maxCount);
         return arr.length - maxCount;
     }
 }
