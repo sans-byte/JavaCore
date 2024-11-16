@@ -11,29 +11,25 @@ public class MoveAllZerosAtTheEnd {
     }
 
     public static void pushZerosToEnd(int[] arr) {
-        int zeroCount = 0;
-        for (int i : arr) {
-            if (i == 0)
-                zeroCount++;
-        }
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] == 0) {
-                zeroCount--;
-                if (zeroCount == 0)
-                    return;
-                continue;
-            } else {
-                int j = i;
-                while (j >= 0 && arr[j] != 0) {
-                    j--;
-                }
-                while (j >= 0 && j < arr.length - 1 && j <= i) {
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = 0;
-                    j++;
-                }
+        int temparr[] = new int[arr.length];
+        int count = 0;
+        int index = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] == 0){
+                count++;
+            }else{
+                temparr[index] = arr[i];
+                index++;
             }
-
+        }
+        while(count != 0 ){
+            temparr[index] = 0;
+            count--;
+            index++;
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i] = temparr[i];
         }
     }
 }
