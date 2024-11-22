@@ -11,6 +11,7 @@ public class FlipColumnsForMaximumNumnberOfEqualRows {
                 { 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1 }, { 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0 },
                 { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 } };
         System.out.println(maxEqualRowsAfterFlips(matrix));
+        System.out.println(maxEqualRowsAfterFlips1(matrix));
     }
 
     // My solution pretty good beats 100% but lengthy and naive
@@ -54,5 +55,25 @@ public class FlipColumnsForMaximumNumnberOfEqualRows {
         return max;
     }
 
-    
+    // Better solution
+    // https://youtu.be/MsdLjL87BEo
+
+    public static int maxEqualRowsAfterFlips1(int[][] matrix) {
+        Map<String, Integer> map = new HashMap<>();
+
+        for (int[] row : matrix) {
+            StringBuilder s = new StringBuilder();
+            if (row[0] == 0) {
+                for (int i : row) {
+                    s.append(i);
+                }
+            } else {
+                for (int i : row) {
+                    s.append(i == 0 ? 1 : 0);
+                }
+            }
+            map.merge(s.toString(), 1, Integer::sum);
+        }
+        return Collections.max(map.values());
+    }
 }
