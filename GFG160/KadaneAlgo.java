@@ -1,7 +1,6 @@
 package GFG160;
 
 //Kadane's algo
-// Maximum sum subarray
 
 public class KadaneAlgo {
     public static void main(String[] args) {
