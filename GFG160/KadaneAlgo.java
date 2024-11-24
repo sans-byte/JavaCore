@@ -1,6 +1,5 @@
 package GFG160;
 
-//Kadane's Algorithm
 // Maximum sum subarray
 
 public class KadaneAlgo {
