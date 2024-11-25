@@ -1,7 +1,5 @@
 package LeetOct;
 
-//TODO : Redo it coz it uses BFS algo
-
 //https://leetcode.com/problems/sliding-puzzle/description/
 
 import java.util.*;
