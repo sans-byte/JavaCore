@@ -22,5 +22,4 @@ public class MaxChampion2 {
         }
         return res;
     }
-
 }
