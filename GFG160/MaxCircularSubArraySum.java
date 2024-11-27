@@ -1,5 +1,7 @@
 package GFG160;
 
+//TODO: Complete it
+
 import java.util.*;
 
 class MaxCircularSubArraySum {
@@ -10,6 +12,7 @@ class MaxCircularSubArraySum {
         System.out.println(circularSubarraySum(arr));
     }
 
+    // This approach gives TLE
     public static int circularSubarraySum(int arr[]) {
         int maxSum = Integer.MIN_VALUE;
         for (int i = 0; i < arr.length; i++) {
@@ -27,5 +30,15 @@ class MaxCircularSubArraySum {
             }
         }
         return maxSum;
+    }
+
+    public static int circularSubarraySumBetter(int arr[]) {
+        
+        return 0;
+    }
+
+    public static int circularSubarraySumBest(int arr[]) {
+
+        return 0;
     }
 }
