@@ -37,6 +37,6 @@ public class BFS {
             }
         }
         System.out.println(Arrays.toString(visited));
-        return res;
+        return null;
     }
 }
