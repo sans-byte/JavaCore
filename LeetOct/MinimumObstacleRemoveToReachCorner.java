@@ -11,28 +11,14 @@ public class MinimumObstacleRemoveToReachCorner {
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[0] = 0;
 
-        int x = 0;
-        int y = 0;
-
-        PriorityQueue<List<Integer>> pq = new PriorityQueue<>((a, b) -> a.get(2) - b.get(2));
-        List<Integer> temp = new ArrayList<>() {
-            {
-                add(x);
-                add(y);
-                add(grid[x][y]);
-            }
-        };
-
-        pq.add(temp);
-
-        System.out.println(pq);
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> Integer.compare(a[2], b[2]));
+        pq.add(new int[] { 0, 0, 0 });
 
         while (!pq.isEmpty()) {
-            List<Integer> val = pq.poll();
-            System.out.println("hell");
-            int eleX = val.get(0);
-            int eleY = val.get(1);
-            int dis = val.get(2);
+            int[] val = pq.poll();
+            int eleX = val[0];
+            int eleY = val[1];
+            int dis = val[2];
 
             if (eleX - 1 >= 0) {
                 int tempEleX = eleX - 1;
@@ -40,11 +26,7 @@ public class MinimumObstacleRemoveToReachCorner {
                 int currDis = dis + grid[tempEleX][tempEleY];
                 if (currDis < distance[n * tempEleX + tempEleY]) {
                     distance[n * tempEleX + tempEleY] = currDis;
-                    List<Integer> temp1 = new ArrayList<>();
-                    temp1.add(tempEleX);
-                    temp1.add(tempEleY);
-                    temp1.add(currDis);
-                    pq.add(temp1);
+                    pq.add(new int[] { tempEleX, tempEleY, currDis });
                 }
             }
 
@@ -54,11 +36,7 @@ public class MinimumObstacleRemoveToReachCorner {
                 int currDis = dis + grid[tempEleX][tempEleY];
                 if (currDis < distance[n * tempEleX + tempEleY]) {
                     distance[n * tempEleX + tempEleY] = currDis;
-                    List<Integer> temp1 = new ArrayList<>();
-                    temp1.add(tempEleX);
-                    temp1.add(tempEleY);
-                    temp1.add(currDis);
-                    pq.add(temp1);
+                    pq.add(new int[] { tempEleX, tempEleY, currDis });
                 }
             }
 
@@ -68,12 +46,7 @@ public class MinimumObstacleRemoveToReachCorner {
                 int currDis = dis + grid[tempEleX][tempEleY];
                 if (currDis < distance[n * tempEleX + tempEleY]) {
                     distance[n * tempEleX + tempEleY] = currDis;
-                    List<Integer> temp1 = new ArrayList<>();
-                    temp1.add(tempEleX);
-                    temp1.add(tempEleY);
-                    temp1.add(currDis);
-                    pq.add(temp1);
-
+                    pq.add(new int[] { tempEleX, tempEleY, currDis });
                 }
             }
 
@@ -83,11 +56,7 @@ public class MinimumObstacleRemoveToReachCorner {
                 int currDis = dis + grid[tempEleX][tempEleY];
                 if (currDis < distance[n * tempEleX + tempEleY]) {
                     distance[n * tempEleX + tempEleY] = currDis;
-                    List<Integer> temp1 = new ArrayList<>();
-                    temp1.add(tempEleX);
-                    temp1.add(tempEleY);
-                    temp1.add(currDis);
-                    pq.add(temp1);
+                    pq.add(new int[] { tempEleX, tempEleY, currDis });
                 }
             }
         }
