@@ -12,7 +12,7 @@ public class CheckIfAWordOccurAsAPrefixIfAnyWordInASentence {
         String[] arr = sentence.split(" ");
         System.out.println(Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i].length() >= searchWord.length() && arr[i].substring(0, searchWord.length()).equals(searchWord)) {
+            if (arr[i].startsWith(searchWord)) {
                 return i + 1;
             }
         }
