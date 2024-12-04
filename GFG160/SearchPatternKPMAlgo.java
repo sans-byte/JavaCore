@@ -2,6 +2,8 @@ package GFG160;
 
 import java.util.*;
 
+//TODO:revisit LPS
+
 public class SearchPatternKPMAlgo {
     public static void main(String[] args) {
         String txt = "aabaacaadaabaaba", pat = "aaba";
