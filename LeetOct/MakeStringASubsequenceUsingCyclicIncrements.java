@@ -21,19 +21,31 @@ public class MakeStringASubsequenceUsingCyclicIncrements {
     }
 
     public static boolean canMakeSubsequence(String str1, String str2) {
-        List<String> list = new ArrayList<>();
-        list.add(str1);
-        createAllSequence(str1, 0, list);
-        for (int i = 0; i < list.size(); i++) {
-            int idx = 0;
-            for (int j = 0; j < list.get(i).length(); j++) {
-                if (list.get(i).charAt(j) == str2.charAt(idx)) {
-                    idx++;
-                }
-                if (idx == str2.length()) {
-                    return true;
-                }
+        // List<String> list = new ArrayList<>();
+        // list.add(str1);
+        // createAllSequence(str1, 0, list);
+        // for (int i = 0; i < list.size(); i++) {
+        // int idx = 0;
+        // for (int j = 0; j < list.get(i).length(); j++) {
+        // if (list.get(i).charAt(j) == str2.charAt(idx)) {
+        // idx++;
+        // }
+        // if (idx == str2.length()) {
+        // return true;
+        // }
+        // }
+        // }
+
+        int j = 0;
+        for (int i = 0; i < str1.length(); i++) {
+            if (str1.charAt(i) == str2.charAt(j)) {
+                j++;
+            } else if ((char) ('a' + (str1.charAt(i) - 'a' + 1) % 26) == str2.charAt(j)) {
+                j++;
             }
+
+            if (j == str2.length())
+                return true;
         }
         return false;
     }
