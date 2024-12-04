@@ -1,7 +1,5 @@
 package GFG160;
 
-import java.util.Arrays;
-
 // Min Chars to Add for Palindrome
 // It is given in the question that we can only add characters at the start
 
