@@ -1,9 +1,12 @@
 package LeetOct;
 
+//TODO: Revisit this question
+
 public class MovePiecesToObtainAString {
     public static void main(String[] args) {
         String start = "_L__R__R_", target = "L______RR";
         // String start = "R_L_", target = "__LR";
+        System.out.println(((char) (49)));
         System.out.println(canChange(start, target));
     }
 
