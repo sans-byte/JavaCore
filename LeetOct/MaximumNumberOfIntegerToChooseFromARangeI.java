@@ -7,6 +7,7 @@ public class MaximumNumberOfIntegerToChooseFromARangeI {
         int banned[] = { 1, 6, 5 }, n = 5, maxSum = 6;
         System.out.println(maxCount(banned, n, maxSum));
     }
+
     public static int maxCount(int[] banned, int n, int maxSum) {
         Set<Integer> s = new HashSet<>();
         for (int i : banned)
