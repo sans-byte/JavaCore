@@ -1,7 +1,5 @@
 package LeetOct;
 
-import java.util.*;
-
 public class MaximumNumberOfIntegerToChooseFromARangeI {
     public static void main(String[] args) {
         int banned[] = { 1, 6, 5 }, n = 5, maxSum = 6;
