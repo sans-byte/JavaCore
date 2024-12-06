@@ -10,7 +10,8 @@ public class MaximumNumberOfIntegerToChooseFromARangeI {
 
     public static int maxCount(int[] banned, int n, int maxSum) {
         Set<Integer> s = new HashSet<>();
-        for (int i : banned) s.add(i);
+        for (int i : banned)
+            s.add(i);
         int sum = 0;
         int count = 0;
         for (int i = 1; i <= n; i++) {
