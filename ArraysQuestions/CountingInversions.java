@@ -2,6 +2,8 @@ package ArraysQuestions;
 
 import java.util.Arrays;
 
+// Inversion Count GFG 160
+
 public class CountingInversions {
     public static void main(String[] args) {
         int[] arr = { 2, 4, 1, 3, 5 };
