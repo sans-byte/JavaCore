@@ -15,6 +15,7 @@ public class TwoBestNonOverlappingEvents {
     public static int maxTwoEvents(int[][] events) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((x, y) -> Integer.compare(x[1], y[1]));
         Arrays.sort(events, (x, y) -> Integer.compare(x[0], y[0]));
+
         int maxValue = 0, ans = 0;
         for (int i = 0; i < events.length; i++) {
             while (!pq.isEmpty() && pq.peek()[1] < events[i][0]) {
