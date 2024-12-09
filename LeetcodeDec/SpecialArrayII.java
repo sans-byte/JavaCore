@@ -19,7 +19,7 @@ public class SpecialArrayII {
 
         boolean res[] = new boolean[queries.length];
         for (int i = 0; i < queries.length; i++) {
-            res[i] = prefix[queries[i][1]] - prefix[queries[i][0]] == 0;
+            res[i] = prefix[queries[i][1]] == prefix[queries[i][0]];
         }
         return res;
     }
