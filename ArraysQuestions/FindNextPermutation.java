@@ -5,7 +5,7 @@ import java.util.Arrays;
 // https://leetcode.com/problems/next-permutation/
 public class FindNextPermutation {
     public static void main(String[] args) {
-        int[] arr = { 2, 3, 1 };
+        int[] arr = { 4, 3, 2, 1 };
 
         nextPermutation(arr);
         System.out.println(Arrays.toString(arr));
