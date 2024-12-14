@@ -4,8 +4,9 @@ import java.util.*;
 
 public class ContiniousSubarrays {
     public static void main(String[] args) {
-        int nums[] = { 5, 4, 2, 4 };
+        int nums[] = { 35, 35, 36, 37, 36, 37, 38, 37, 38 };
         System.out.println(continuousSubarrays(nums));
+        System.out.println(continuousSubarrays1(nums));
     }
 
     public static long continuousSubarrays(int[] nums) {
@@ -30,7 +31,38 @@ public class ContiniousSubarrays {
         return res;
     }
 
-    // second approch with the help of double ended queue
+    // second approch with the help of monotonous deque (increasing or decreasing
+    // dequeue)
+    public static long continuousSubarrays1(int[] nums) {
+        long res = 0;
+        ArrayDeque<Integer> maxQueue = new ArrayDeque<>();
+        ArrayDeque<Integer> minQueue = new ArrayDeque<>();
 
-    
+        int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            while (!minQueue.isEmpty() && nums[minQueue.peekLast()] >= nums[j]) {
+                minQueue.pollLast();
+            }
+            minQueue.addLast(j);
+
+            while (!maxQueue.isEmpty() && nums[maxQueue.peekLast()] <= nums[j]) {
+                maxQueue.pollLast();
+            }
+            maxQueue.addLast(j);
+
+            while (!maxQueue.isEmpty() && !minQueue.isEmpty()
+                    && nums[maxQueue.peekFirst()] - nums[minQueue.peekFirst()] > 2) {
+                if (maxQueue.peekFirst() < minQueue.peekFirst()) {
+                    i = maxQueue.peekFirst() + 1;
+                    maxQueue.pollFirst();
+                } else {
+                    i = minQueue.peekFirst() + 1;
+                    minQueue.pollFirst();
+                }
+            }
+            res += j - i + 1;
+        }
+        return res;
+    }
+
 }
