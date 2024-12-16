@@ -1,7 +1,5 @@
 package BinarySearch;
 
-import java.net.Inet4Address;
-
 public class MedianOfTwoSortedArray {
     public static void main(String[] args) {
         int[] arr1 = { 1, 3, 4, 7, 10, 12 };
