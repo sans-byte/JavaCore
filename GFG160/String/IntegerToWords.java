@@ -3,8 +3,7 @@ package GFG160.String;
 public class IntegerToWords {
     public static void main(String[] args) {
         int n = 20000;
-        System.out.println(Integer.toString(199));
-        // System.out.println(convertToWords(n));
+        System.out.println(convertToWords(n));
     }
 
     public static String convertToWords(int n) {
