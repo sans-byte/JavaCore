@@ -2,7 +2,7 @@ package GFG160.String;
 
 public class IntegerToWords {
     public static void main(String[] args) {
-        int n = 20000;
+        int n = 0000;
         System.out.println(convertToWords(n));
     }
 
