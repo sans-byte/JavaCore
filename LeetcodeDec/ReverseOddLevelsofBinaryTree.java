@@ -50,3 +50,22 @@ class Solution {
         return root;
     }
 }
+
+
+// best solution 
+
+public static void reverse(TreeNode left, TreeNode right,int level){
+    if(left == null) return;
+    reverse(left.left,right.right,level+1);
+    reverse(left.right,right.left,level+1);
+    if(level % 2 == 0){
+        int temp = left.val;
+        left.val = right.val;
+        right.val = temp;
+    }
+}
+public TreeNode reverseOddLevels(TreeNode root) {
+    reverse(root.left,root.right,0);
+    return root;
+}
+}
