@@ -1,4 +1,3 @@
-package LeetcodeDec;
 
 // TODO : need to complete this
 
