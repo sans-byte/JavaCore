@@ -1,4 +1,3 @@
-package LeetcodeDec;
 
 import java.util.*;
 
