@@ -1,4 +1,3 @@
-package LeetcodeDec;
 
 public class MaxChunkToMakeSorted {
     public static void main(String[] args) {
