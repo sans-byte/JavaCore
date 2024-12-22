@@ -15,26 +15,18 @@ public class FindBuildingWhereAliceandBobCanMeet {
         Arrays.fill(res, -1);
 
         for (int i = 0; i < queries.length; i++) {
-            int alice = queries[i][0];
-            int bob = queries[i][1];
+            int alice = Math.min(queries[i][0], queries[i][1]);
+            int bob = Math.max(queries[i][0], queries[i][1]);
             if (alice == bob) {
                 res[i] = alice;
-            } else if (alice > bob) {
-                for (int j = alice; j < heights.length; j++) {
-                    if (heights[j] >= heights[alice] && heights[j] > heights[bob]) {
-                        res[i] = j;
-                        break;
-                    }
-                }
             } else {
                 for (int j = bob; j < heights.length; j++) {
-                    if (heights[j] > heights[alice] && heights[j] >= heights[bob]) {
+                    if (heights[j] >= heights[bob] && heights[j] > heights[alice]) {
                         res[i] = j;
                         break;
                     }
                 }
             }
-
         }
         return res;
     }
