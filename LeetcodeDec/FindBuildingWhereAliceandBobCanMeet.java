@@ -1,5 +1,3 @@
-package LeetcodeDec;
-
 import java.util.*;
 
 public class FindBuildingWhereAliceandBobCanMeet {
