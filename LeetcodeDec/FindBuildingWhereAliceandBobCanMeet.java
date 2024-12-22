@@ -12,7 +12,7 @@ public class FindBuildingWhereAliceandBobCanMeet {
 
     public static int[] leftmostBuildingQueries(int[] heights, int[][] queries) {
         int res[] = new int[queries.length];
-        Stack s = new LinkedList<>();
+        Stack s = new Stack<>();
         Arrays.fill(res, -1);
         for (int i = 0; i < queries.length; i++) {
             int alice = queries[i][0];
