@@ -1,5 +1,7 @@
 package Tree;
 
+// Diameter of a binary tree -> Maximum distance between two nodes of a tree
+
 public class DiameterOfABinaryTree {
     public static void main(String[] args) {
         int root[] = { 1, 2, 3, 4, 5 };
