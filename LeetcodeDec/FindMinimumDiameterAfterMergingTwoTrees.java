@@ -7,58 +7,55 @@ public class FindMinimumDiameterAfterMergingTwoTrees {
         // edges2[][] = { { 0, 1 }, { 0, 2 }, { 0, 3 }, { 2, 4 }, { 2, 5 }, { 3, 6 }, {
         // 2, 7 } };
 
-        // int edges1[][] = { { 1, 0 }, { 1, 2 }, { 1, 3 } };
-        // int edges2[][] = { { 3, 0 }, { 1, 2 }, { 4, 1 }, { 3, 4 } };
+        int edges1[][] = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
+        int edges2[][] = { { 0, 1 } };
 
-        int edges1[][] = { { 0, 1 }, { 2, 0 }, { 3, 2 }, { 3, 6 }, { 8, 7 }, { 4, 8 }, { 5, 4 }, { 3, 5 }, { 3, 9 } };
-        int edges2[][] = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
+        // int edges1[][] = { { 0, 1 }, { 2, 0 }, { 3, 2 }, { 3, 6 }, { 8, 7 }, { 4, 8
+        // }, { 5, 4 }, { 3, 5 }, { 3, 9 } };
+        // int edges2[][] = { { 0, 1 }, { 0, 2 }, { 0, 3 } };
 
         System.out.println(minimumDiameterAfterMerge(edges1, edges2));
     }
 
-    public static int bfs(List<List<Integer>> edges, int root, boolean[] visited) {
-        visited[root] = true;
-        int res = 0;
-        for (int i : edges.get(root)) {
-            if (visited[i] == false) {
-                res = Math.max(res, 1 + bfs(edges, i, visited));
+    public static void dfs(List<List<Integer>> edges, int curr, int parent, int distance, int[] res) {
+
+        if (distance > res[0]) {
+            res[0] = distance;
+            res[1] = curr;
+        }
+
+        for (int i : edges.get(curr)) {
+            if (i != parent) {
+                dfs(edges, i, curr, distance + 1, res);
             }
         }
-        return res;
     }
 
-    public static int[] helper(int[][] edges1) {
+    public static int helper(int[][] edges) {
         List<List<Integer>> l = new ArrayList<>();
-        int max = 0;
-        for (int i = 0; i < edges1.length; i++) {
-            max = Math.max(max, Math.max(edges1[i][0], edges1[i][1]));
-        }
-        for (int i = 0; i <= max; i++) {
+        int n = edges.length + 1;
+        for (int i = 0; i <= n; i++) {
             l.add(new ArrayList<>());
         }
 
-        for (int i = 0; i < edges1.length; i++) {
-            l.get(edges1[i][0]).add(edges1[i][1]);
-            l.get(edges1[i][1]).add(edges1[i][0]);
+        for (int i = 0; i < edges.length; i++) {
+            l.get(edges[i][0]).add(edges[i][1]);
+            l.get(edges[i][1]).add(edges[i][0]);
         }
-        System.out.println(l);
-        int minDistance = max;
-        int maxDistance = 0;
-        for (int i = 0; i <= max; i++) {
-            boolean visited[] = new boolean[max + 1];
-            int val = bfs(l, i, visited);
-            maxDistance = Math.max(maxDistance, val);
-            minDistance = Math.min(minDistance, val);
-        }
-        return new int[] { minDistance, maxDistance };
+
+        int distanceAndExtremeNode[] = { Integer.MIN_VALUE, -1 };
+        dfs(l, 0, -1, 0, distanceAndExtremeNode);
+        dfs(l, distanceAndExtremeNode[1], -1, 0, distanceAndExtremeNode);
+
+        System.out.println(Arrays.toString(distanceAndExtremeNode));
+        return distanceAndExtremeNode[0];
     }
 
     public static int minimumDiameterAfterMerge(int[][] edges1, int[][] edges2) {
-        int values1[] = helper(edges1);
-        int values2[] = helper(edges2);
+        int value1 = helper(edges1);
+        int value2 = helper(edges2);
 
-        int diameter = values1[0] + values2[0] + 1;
-
-        return Math.max(diameter, Math.max(values1[1], values2[1]));
+        int diameter = (int) (Math.ceil(value1 / 2.0) + Math.ceil(value2 / 2.0)) + 1;
+        return Math.max(diameter, Math.max(value1, value2));
     }
 }
