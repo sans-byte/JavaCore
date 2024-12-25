@@ -24,3 +24,5 @@ public class DiameterOfABinaryTree {
         return res[0];
     }
 }
+
+// Complexity is O(N) as we are traversing every node only once
