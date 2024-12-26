@@ -1,5 +1,4 @@
 
-
 public class TargetSum {
     public static void main(String[] args) {
         int nums[] = { 1, 1, 1, 1, 1 }, target = 3;
@@ -20,8 +19,9 @@ public class TargetSum {
     }
 
     public static int findTargetSumWays(int[] nums, int target) {
+        int dp[] = new int[nums.length];
         return helper(nums, 0, 0, target);
     }
 
-    //could also be done with DP in efficient manner
+    // could also be done with DP in efficient manner
 }
