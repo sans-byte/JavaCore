@@ -6,7 +6,7 @@ public class TargetSum {
         System.out.println(findTargetSumWays(nums, target));
     }
 
-    // Recursion
+    // Recursion (2 ^ N)
     public static int helper(int nums[], int index, int sum, int target) {
         if (index >= nums.length) {
             if (target == sum) {
