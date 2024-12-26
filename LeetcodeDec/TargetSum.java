@@ -22,4 +22,6 @@ public class TargetSum {
     public static int findTargetSumWays(int[] nums, int target) {
         return helper(nums, 0, 0, target);
     }
+
+    //could also be done with DP in efficient manner
 }
