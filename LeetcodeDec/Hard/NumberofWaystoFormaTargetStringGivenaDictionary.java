@@ -9,37 +9,27 @@ public class NumberofWaystoFormaTargetStringGivenaDictionary {
         System.out.println(numWays(words, target));
     }
 
-    public static void createPowerSet(String words[], List<List<String>> powerSet, List<String> temp, int index) {
-
-        powerSet.add(new ArrayList<>(temp));
-
-        // temp.add(words[index]);
-        // createPowerSet(words, powerSet, temp, index + 1);
-        // temp.remove(words[index]);
-        // createPowerSet(words, powerSet, temp, index + 1);
-        for (int i = index; i < words.length; i++) {
-            temp.add(words[i]);
-            createPowerSet(words, powerSet, temp, i + 1);
-            temp.remove(temp.size() - 1);
-        }
-        return;
-    }
-
     public static int numWays(String[] words, String target) {
-        List<List<String>> powerSet = new ArrayList<>();
-        createPowerSet(words, powerSet, new ArrayList<>(), 0);
-        for (int i = 0; i < powerSet.size(); i++) {
-            for (int j = 0; j < powerSet.get(i).size(); j++) {
-                int x = 0;
-                int targetIndex = 0;
-                for (int k = x; k < powerSet.get(i).get(j).length(); k++) {
-                    char val = powerSet.get(i).get(j).charAt(k);
-                    if (val == target.charAt(targetIndex)) {
+        int n = words[0].length();
+        int m = target.length();
+        int dp[] = new int[m + 1];
+        dp[0] = 1;
+        int mod = 1000000007;
 
-                    }
-                }
+        int count[][] = new int[n][26];
+        for (String s : words) {
+            for (int i = 0; i < s.length(); i++) {
+                int index = s.charAt(i) - 'a';
+                count[i][index]++;
             }
         }
-        return 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = m - 1; j >= 0; j--) {
+                dp[j + 1] += (int) ((long) (dp[j] * count[i][target.charAt(j) - 'a'])) % mod;
+                dp[j + 1] %= mod;
+            }
+        }
+        return dp[m];
     }
 }
