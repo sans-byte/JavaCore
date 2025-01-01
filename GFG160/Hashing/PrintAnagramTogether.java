@@ -55,4 +55,38 @@ public class PrintAnagramTogether {
         });
         return res;
     }
+
+    public static ArrayList<ArrayList<String>> anagrams1(String[] arr) {
+        Map<String, ArrayList<String>> m = new HashMap<>();
+
+        for (String s : arr) {
+            char[] l = s.toCharArray();
+            Arrays.sort(l);
+            String newStr = new String(l);
+            if (m.containsKey(newStr)) {
+                ArrayList<String> temp = m.get(newStr);
+                temp.add(s);
+                m.put(newStr, temp);
+            } else {
+                m.put(newStr, new ArrayList<>() {
+                    {
+                        add(s);
+                    }
+                });
+            }
+        }
+        ArrayList<ArrayList<String>> res = new ArrayList<>(m.values());
+        Collections.sort(res, new Comparator<List<String>>() {
+            public int compare(List<String> x, List<String> y) {
+                System.out.println(x.get(0).charAt(0));
+                if (x.get(0).charAt(0) > y.get(0).charAt(0))
+                    return 1;
+                if (x.get(0).charAt(0) < y.get(0).charAt(0))
+                    return -1;
+
+                return 0;
+            }
+        });
+        return res;
+    }
 }
