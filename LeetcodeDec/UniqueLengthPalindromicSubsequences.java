@@ -72,12 +72,9 @@ public class UniqueLengthPalindromicSubsequences {
                 x++;
             }
 
-            while (y >= 0 && s.charAt(y) != c) {
+            while (y > x && s.charAt(y) != c) {
                 y--;
             }
-
-            if (x == y)
-                continue;
 
             Set<Character> set = new HashSet<>();
             for (int j = x + 1; j < y; j++) {
