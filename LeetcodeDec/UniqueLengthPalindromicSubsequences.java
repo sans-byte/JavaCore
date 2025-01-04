@@ -60,4 +60,31 @@ public class UniqueLengthPalindromicSubsequences {
 
         return set.size();
     }
+
+    public static int countPalindromicSubsequenceBetter(String s) {
+        Set<Character> charSet = new HashSet<>();
+        int count = 0;
+        for(int i=0;i<s.length();i++) charSet.add(s.charAt(i));
+        for(char c:charSet){
+            int x = 0;
+            int y = s.length() - 1;
+            while (x < s.length() && s.charAt(x) != c) {
+                x++;
+            }
+
+            while (y >= 0 && s.charAt(y) != c) {
+                y--;
+            }
+
+            if (x == y)
+                continue;
+
+            Set<Character> set = new HashSet<>();
+            for (int j = x + 1; j < y; j++) {
+               set.add(s.charAt(j));
+            }
+            count += set.size();
+        }
+        return count;
+    }
 }
