@@ -25,7 +25,6 @@ public class StringsRotationOfEachOther {
                 }
             }
         }
-
     }
 
     public static boolean areRotations(String s1, String s2) {
