@@ -10,32 +10,43 @@ public class CheckifaParenthesesStringCanBeValid {
     }
 
     public static boolean canBeValid(String s, String locked) {
-        if (s.length() % 2 != 0)
+        int stringLength = s.length();
+        if (stringLength % 2 == 1) {
             return false;
+        }
 
-        Stack<char[]> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                if (locked.charAt(i) == '0') {
-                    if (!stack.isEmpty() && (stack.peek()[1] == '0' || stack.peek()[0] == '(')) {
-                        stack.pop();
-                    } else {
-                        stack.add(new char[] { s.charAt(i), locked.charAt(i) });
-                    }
+        Stack<Integer> openIndices = new Stack<>();
+        Stack<Integer> unlockedIndices = new Stack<>();
+
+        // Traverse the string
+        for (int i = 0; i < stringLength; i++) {
+            if (locked.charAt(i) == '0') {
+                unlockedIndices.push(i);
+            } else if (s.charAt(i) == '(') {
+                openIndices.push(i);
+            } else if (s.charAt(i) == ')') {
+                if (!openIndices.isEmpty()) {
+                    openIndices.pop();
+                } else if (!unlockedIndices.isEmpty()) {
+                    unlockedIndices.pop();
                 } else {
-                    stack.add(new char[] { s.charAt(i), locked.charAt(i) });
-                }
-            } else {
-                if (!stack.isEmpty() && (stack.peek()[1] == '0' || stack.peek()[0] == '(')) {
-                    stack.pop();
-                } else {
-                    stack.add(new char[] { s.charAt(i), locked.charAt(i) });
+                    return false;
                 }
             }
         }
-        for (char[] i : stack) {
-            System.out.println(Arrays.toString(i));
+
+        // Match remaining open parentheses
+        while (!openIndices.isEmpty() && !unlockedIndices.isEmpty() &&
+                openIndices.peek() < unlockedIndices.peek()) {
+            openIndices.pop();
+            unlockedIndices.pop();
         }
-        return stack.isEmpty();
+
+        // Final check
+        if (openIndices.isEmpty() && !unlockedIndices.isEmpty()) {
+            return unlockedIndices.size() % 2 == 0;
+        }
+
+        return openIndices.isEmpty();
     }
 }
