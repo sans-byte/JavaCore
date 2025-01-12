@@ -7,6 +7,7 @@ public class CheckifaParenthesesStringCanBeValid {
         // String s = "))()))", locked = "010100";
         String s = "((()(()()))()((()()))))(", locked = "101111001001010011101000";
         System.out.println(canBeValid(s, locked));
+        System.out.println(canBeValid1(s, locked));
     }
 
     public static boolean canBeValid(String s, String locked) {
@@ -48,5 +49,47 @@ public class CheckifaParenthesesStringCanBeValid {
         }
 
         return openIndices.isEmpty();
+    }
+
+    public static boolean canBeValid1(String s, String locked) {
+        int unlocked = 0;
+        int openBrackets = 0;
+
+        // left to right pass
+        for (int i = 0; i < s.length(); i++) {
+            if (locked.charAt(i) == '0') {
+                unlocked++;
+            } else if (s.charAt(i) == '(') {
+                openBrackets++;
+            } else { // s.charAt(i) == ')'
+                if (openBrackets > 0) {
+                    openBrackets--;
+                } else if (unlocked > 0) {
+                    unlocked--;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        unlocked = 0;
+        openBrackets = 0;
+        // right to left pass
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (locked.charAt(i) == '0') {
+                unlocked++;
+            } else if (s.charAt(i) == ')') {
+                openBrackets++;
+            } else { // s.charAt(i) == '('
+                if (openBrackets > 0) {
+                    openBrackets--;
+                } else if (unlocked > 0) {
+                    unlocked--;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
