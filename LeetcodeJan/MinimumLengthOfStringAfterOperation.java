@@ -33,4 +33,24 @@ public class MinimumLengthOfStringAfterOperation {
         }
         return res;
     }
+
+    public static int minimumLength1(String s) {
+        int arr[] = new int[26];
+        int count[] = new int[26];
+        int res = s.length();
+        for (int i = 0; i < s.length(); i++) {
+            int index = s.charAt(i) - 'a';
+            count[index]++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            int index = s.charAt(i) - 'a';
+            arr[index]++;
+            if (arr[index] % 2 == 0) {
+                if (count[index] > arr[index]) {
+                    res -= 2;
+                }
+            }
+        }
+        return res;
+    }
 }
