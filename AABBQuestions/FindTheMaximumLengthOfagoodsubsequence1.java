@@ -12,6 +12,13 @@ public class FindTheMaximumLengthOfagoodsubsequence1 {
     }
 
     public static void helper(int[] arr, int index, int k, ArrayList<Integer> temp, int count) {
+
+        if(count > k){
+            return;
+        }
+
+        if(arr.length - index < res) return;
+
         if (index >= arr.length) {
             if (count <= k) {
                 res = Math.max(res, temp.size());
