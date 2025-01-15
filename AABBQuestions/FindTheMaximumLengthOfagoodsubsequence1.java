@@ -13,37 +13,29 @@ public class FindTheMaximumLengthOfagoodsubsequence1 {
 
     public static void helper(int[] arr, int index, int k, ArrayList<Integer> temp, int count) {
 
-        if(count > k){
+        if (count > k) {
             return;
         }
 
-        if(arr.length - index < res) return;
+        if (arr.length - index < res)
+            return;
 
         if (index >= arr.length) {
             if (count <= k) {
                 res = Math.max(res, temp.size());
-                System.out.println(temp);
             }
             return;
         }
         temp.add(arr[index]);
-        if (temp.size() > 1) {
-            if (temp.get(temp.size() - 1) != temp.get(temp.size() - 2)) {
-                helper(arr, index + 1, k, temp, count + 1);
-            } else {
-                helper(arr, index + 1, k, temp, count);
-            }
+        if (temp.size() > 1 && temp.get(temp.size() - 1) != temp.get(temp.size() - 2)) {
+            helper(arr, index + 1, k, temp, count + 1);
         } else {
             helper(arr, index + 1, k, temp, count);
         }
         int ele = temp.get(temp.size() - 1);
         temp.remove(temp.size() - 1);
-        if (temp.size() >= 1) {
-            if (temp.get(temp.size() - 1) != ele) {
-                helper(arr, index + 1, k, temp, count--);
-            } else {
-                helper(arr, index + 1, k, temp, count);
-            }
+        if (temp.size() >= 1 && temp.get(temp.size() - 1) != ele) {
+            helper(arr, index + 1, k, temp, count--);
         } else {
             helper(arr, index + 1, k, temp, count);
         }
