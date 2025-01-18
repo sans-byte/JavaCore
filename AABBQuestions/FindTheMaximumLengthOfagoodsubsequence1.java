@@ -1,5 +1,7 @@
 package AABBQuestions;
 
+// same is LIS DP approach check it out (Longest increasing subsequence)
+
 import java.util.ArrayList;
 
 public class FindTheMaximumLengthOfagoodsubsequence1 {
@@ -11,39 +13,25 @@ public class FindTheMaximumLengthOfagoodsubsequence1 {
         System.out.println(maximumLength(nums, k));
     }
 
-    public static void helper(int[] arr, int index, int k, ArrayList<Integer> temp, int count) {
+    public static int helper(int[] arr, int index, int k, int prev) {
+        // base
+        if (index == arr.length)
+            return 0;
 
-        if (count > k) {
-            return;
+        int pick = 0;
+
+        if (prev == -1 || arr[index] == arr[prev]) {
+            pick = 1 + helper(arr, index + 1, k, index);
+        } else if (k > 0) {
+            pick = 1 + helper(arr, index + 1, k - 1, index);
         }
 
-        if (arr.length - index < res)
-            return;
+        int notPick = helper(arr, index + 1, k, prev);
 
-        if (index >= arr.length) {
-            if (count <= k) {
-                res = Math.max(res, temp.size());
-            }
-            return;
-        }
-        temp.add(arr[index]);
-        if (temp.size() > 1 && temp.get(temp.size() - 1) != temp.get(temp.size() - 2)) {
-            helper(arr, index + 1, k, temp, count + 1);
-        } else {
-            helper(arr, index + 1, k, temp, count);
-        }
-        int ele = temp.get(temp.size() - 1);
-        temp.remove(temp.size() - 1);
-        if (temp.size() >= 1 && temp.get(temp.size() - 1) != ele) {
-            helper(arr, index + 1, k, temp, count--);
-        } else {
-            helper(arr, index + 1, k, temp, count);
-        }
+        return Math.max(pick, notPick);
     }
 
     public static int maximumLength(int[] nums, int k) {
-        helper(nums, 0, k, new ArrayList<>(), 0);
-        System.out.println(res);
-        return 0;
+        return helper(nums, 0, k, -1);
     }
 }
