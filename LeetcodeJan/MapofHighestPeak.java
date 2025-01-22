@@ -7,9 +7,10 @@ public class MapofHighestPeak {
     static int yAxis[] = new int[] { 0, 0, 1, -1 };
 
     public static void main(String[] args) {
-        // int isWater[][] = { { 0, 0, 1 }, { 1, 0, 0 }, { 0, 0, 0 } };
+        int isWater[][] = { { 0, 0, 1 }, { 1, 0, 0 }, { 0, 0, 0 } };
         // int isWater[][] = { { 0, 1 }, { 0, 0 } };
-        int isWater[][] = { { 0, 1, 1 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 0 }, { 0, 1, 0 } };
+        // int isWater[][] = { { 0, 1, 1 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 0 }, { 0,
+        // 1, 0 } };
         System.out.println(highestPeak(isWater));
     }
 
@@ -17,7 +18,7 @@ public class MapofHighestPeak {
         for (int k = 0; k < 4; k++) {
             int row = i + yAxis[k];
             int col = j + xAxis[k];
-            if (row >= 0 && row < res.length && col >= 0 && col < res[0].length && res[row][col] == Integer.MAX_VALUE) {
+            if (row >= 0 && row < res.length && col >= 0 && col < res[0].length && res[row][col] == -1) {
                 res[row][col] = res[i][j] + 1;
                 q.add(new int[] { row, col });
             }
@@ -29,7 +30,7 @@ public class MapofHighestPeak {
             int row = i + yAxis[k];
             int col = j + xAxis[k];
             if (row >= 0 && row < res.length && col >= 0 && col < res[0].length) {
-                if (res[row][col] == Integer.MAX_VALUE) {
+                if (res[row][col] == -1) {
                     res[row][col] = 1;
                     q.add(new int[] { row, col });
                 }
@@ -43,7 +44,7 @@ public class MapofHighestPeak {
         Queue<int[]> q = new LinkedList<>();
         int res[][] = new int[n][m];
         for (int[] row : res) {
-            Arrays.fill(row, Integer.MAX_VALUE);
+            Arrays.fill(row, -1);
         }
 
         for (int i = 0; i < n; i++) {
@@ -62,7 +63,7 @@ public class MapofHighestPeak {
             }
         }
 
-        while (q.isEmpty()) {
+        while (!q.isEmpty()) {
             int len = q.size();
             for (int i = 0; i < len; i++) {
                 int[] val = q.poll();
@@ -70,16 +71,6 @@ public class MapofHighestPeak {
             }
         }
 
-        // for (int i = 0; i < n; i++) {
-        // for (int j = 0; j < m; j++) {
-        // if (res[i][j] == Integer.MAX_VALUE) {
-        // res[i][j] = helperMinValue(res, i, j) + 1;
-        // }
-        // }
-        // }
-        for (int[] row : res) {
-            System.out.println(Arrays.toString(row));
-        }
         return res;
     }
 }
