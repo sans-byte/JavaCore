@@ -1,7 +1,5 @@
 package GFG160.LinkedList;
 
-import java.util.LinkedList;
-
 class Node {
     int data;
     Node next;
