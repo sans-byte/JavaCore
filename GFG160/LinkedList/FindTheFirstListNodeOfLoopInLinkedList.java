@@ -28,22 +28,38 @@ public class FindTheFirstListNodeOfLoopInLinkedList {
     }
 
     public static ListNode findFirstListNode(ListNode head) {
-        if (head.next == null)
-            return null;
+        if (head == null || head.next == null) {
+            return null; // No loop possible in an empty or single-node list
+        }
+    
         ListNode slow = head;
-        ListNode fast = head.next;
-        while (fast != null && fast.next != null && fast != slow) {
+        ListNode fast = head;
+    
+        // Detect the loop using Floyd's Cycle Detection Algorithm
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+    
+            // If slow and fast meet, there is a loop
+            if (slow == fast) {
+                break;
+            }
         }
-        if (fast == null || fast.next == null)
+    
+        // If no loop is found, return null
+        if (fast == null || fast.next == null) {
             return null;
-        slow = head;
-        fast = fast.next;
-        while (fast != slow) {
-            fast = fast.next;
-            slow = slow.next;
         }
+    
+        // Find the starting node of the loop
+        slow = head;
+    
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+    
+        // Both pointers now point to the start of the loop
         return slow;
     }
 }
