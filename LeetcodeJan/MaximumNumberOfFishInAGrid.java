@@ -12,16 +12,17 @@ public class MaximumNumberOfFishInAGrid {
     }
 
     // perform dfs and get the values
-    public static int helper(int[][] grid, int i, int j) {
-        if (grid[i][j] == 0) {
+    public static int helper(int[][] grid, int i, int j, int[][] visited) {
+        if (grid[i][j] == 0 || visited[i][j] == 1) {
             return 0;
         }
-        int fishes = 0;
+        visited[i][j] = 1;
+        int fishes = grid[i][j];
         for (int k = 0; k < 4; k++) {
             int row = i + yAxis[k];
             int col = j + xAxis[k];
             if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
-                fishes = grid[i][j] + helper(grid, row, col);
+                fishes += helper(grid, row, col, visited);
             }
         }
         return fishes;
@@ -31,14 +32,9 @@ public class MaximumNumberOfFishInAGrid {
         int res = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 0) {
-                    for (int k = 0; k < 4; k++) {
-                        int row = i + yAxis[k];
-                        int col = j + xAxis[k];
-                        if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
-                            res = Math.max(res, helper(grid, row, col));
-                        }
-                    }
+                if (grid[i][j] > 0) {
+                    int visited[][] = new int[grid.length][grid[0].length];
+                    res = Math.max(res, helper(grid, i, j, visited));
                 }
             }
         }
