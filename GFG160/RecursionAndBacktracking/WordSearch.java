@@ -12,39 +12,35 @@ public class WordSearch {
         System.out.println(isWordExist(mat, word));
     }
 
-    static public boolean helper(char[][] mat, int row, int col, String word, int[][] visited) {
-        if (word.length() == 1)
+    static public boolean helper(char[][] mat, int row, int col, String word, int idx, int[][] visited) {
+        if (idx >= word.length())
             return true;
-        char wordArr[] = word.toCharArray();
-        Queue<int[]> q = new LinkedList<>();
-        q.add(new int[] { row, col, 1 });
-        visited[row][col] = 1;
-        while (!q.isEmpty()) {
-            for (int i = 0; i < q.size(); i++) {
-                int val[] = q.poll();
-                if (val[2] >= wordArr.length)
-                    return true;
-                for (int k = 0; k < 4; k++) {
-                    int newRow = val[0] + yAxis[k];
-                    int newCol = val[1] + xAxis[k];
+        if (row < 0 || row >= mat.length || col < 0 || col >= mat[0].length || visited[row][col] == 1
+                || mat[row][col] != word.charAt(idx)) {
+            return false;
+        }
 
-                    if (newRow >= 0 && newRow < mat.length && newCol >= 0 && newCol < mat[0].length
-                            && mat[newRow][newCol] == wordArr[val[2]] && visited[newRow][newCol] == 0) {
-                        q.add(new int[] { newRow, newCol, val[2] + 1 });
-                        visited[newRow][newCol] = 1;
-                    }
-                }
+        visited[row][col] = 1;
+
+        for (int i = 0; i < 4; i++) {
+            int newRow = row + yAxis[i];
+            int newCol = col + xAxis[i];
+
+            if (helper(mat, newRow, newCol, word, idx + 1, visited)) {
+                return true;
             }
         }
+
+        visited[row][col] = 0;
         return false;
     }
 
     public static boolean isWordExist(char[][] mat, String word) {
+        int visited[][] = new int[mat.length][mat[0].length];
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
                 if (mat[i][j] == word.charAt(0)) {
-                    int visited[][] = new int[mat.length][mat[0].length];
-                    if (helper(mat, i, j, word, visited)) {
+                    if (helper(mat, i, j, word, 0, visited)) {
                         return true;
                     }
                 }
