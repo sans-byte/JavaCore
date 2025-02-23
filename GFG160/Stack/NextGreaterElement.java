@@ -7,6 +7,7 @@ import java.util.Stack;
 public class NextGreaterElement {
     public static void main(String[] args) {
         int[] arr = { 1, 3, 2, 4 };
+        // int[] arr = { 50, 40, 30, 10;
         System.out.println(nextLargerElement(arr));
     }
 
