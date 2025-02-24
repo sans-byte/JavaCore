@@ -20,10 +20,32 @@ public class StackSpanProblem {
                 count++;
             }
             res.add(count);
-            stack.add(arr[i]);
             while (!temp.isEmpty())
                 stack.add(temp.pop());
+            stack.add(arr[i]);
         }
         return res;
     }
 }
+
+
+// public static Stack<Integer> stack = new Stack<>();
+//     public static Stack<Integer> temp = new Stack<>();
+
+//     public StockSpanner() {
+//         this.stack.clear();
+//         this.temp.clear();
+//         this.res.clear();
+//     }
+    
+//     public int next(int price) {
+//         int count = 1;
+//         while (!stack.isEmpty() && stack.peek() < price) {
+//             temp.add(stack.pop());
+//             count++;
+//         }
+//         while (!temp.isEmpty())
+//             stack.add(temp.pop());
+//         stack.add(arr[i]);
+//         return count;
+// }
