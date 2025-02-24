@@ -15,7 +15,7 @@ public class StackSpanProblem {
 
         for (int i = 0; i < arr.length; i++) {
             int count = 1;
-            while (!stack.isEmpty() && stack.peek() < arr[i]) {
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
                 temp.add(stack.pop());
                 count++;
             }
