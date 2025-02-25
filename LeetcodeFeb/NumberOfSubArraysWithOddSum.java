@@ -2,7 +2,7 @@ package LeetcodeFeb;
 
 public class NumberOfSubArraysWithOddSum {
     public static void main(String[] args) {
-        int arr[] = { 1, 3, 5 };
+        int arr[] = { 2, 4, 6 };
         System.out.println(numOfSubarrays(arr));
     }
 
@@ -12,6 +12,11 @@ public class NumberOfSubArraysWithOddSum {
                 count[0]++;
             return;
         }
+
+        getAllSubArrays(arr, i + 1, sum + arr[i], count);
+        getAllSubArrays(arr, i + 1, sum, count);
+
+        return;
     }
 
     public static int numOfSubarrays(int[] arr) {
