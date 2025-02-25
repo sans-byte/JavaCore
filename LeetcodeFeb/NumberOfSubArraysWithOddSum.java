@@ -7,13 +7,19 @@ public class NumberOfSubArraysWithOddSum {
     }
 
     public static int numOfSubarrays(int[] arr) {
+        int oddCount = 0;
+        int evenCount = 1;
         int count = 0;
+        int mod = 1000000007;
+        int sum = 0;
         for (int i = 0; i < arr.length; i++) {
-            int sum = 0;
-            for (int j = i; j < arr.length; j++) {
-                sum += arr[j];
-                if (sum % 2 != 0)
-                    count++;
+            sum += arr[i];
+            if (sum % 2 == 0) {
+                count = (count + oddCount) % mod;
+                evenCount++;
+            } else {
+                count = (count + evenCount) % mod;
+                oddCount++;
             }
         }
         return count;
