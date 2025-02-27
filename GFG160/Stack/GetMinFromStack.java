@@ -4,6 +4,4 @@ public class GetMinFromStack {
     public static void main(String[] args) {
         
     }
-
-    
 }
