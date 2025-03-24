@@ -31,9 +31,6 @@ public class CountDaysWithoutMeetings {
             }
             lastValue = meetings[i][1];
         }
-        for (int i[] : list) {
-            System.out.println(Arrays.toString(i));
-        }
         int sum = 0;
         for (int i = 1; i < list.size(); i++) {
             sum += list.get(i)[0] - list.get(i - 1)[1] - 1;
