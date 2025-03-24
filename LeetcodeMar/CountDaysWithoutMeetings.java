@@ -19,9 +19,6 @@ public class CountDaysWithoutMeetings {
     public static int countDays(int days, int[][] meetings) {
         Arrays.sort(meetings, (x, y) -> Integer.compare(x[0], y[0]));
         List<int[]> list = new ArrayList<>();
-        // for (int i = 0; i < meetings.length; i++) {
-        // list.add(new int[] { meetings[i][0], meetings[i][1] });
-        // }
         list.add(new int[] { meetings[0][0], meetings[0][1] });
         int lastValue = meetings[0][1];
         for (int i = 1; i < meetings.length; i++) {
