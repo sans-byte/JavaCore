@@ -20,7 +20,12 @@ public class MinimumOperationstoMakeaUniValueGrid {
             }
         }
         int round = Math.round(sum / (n * m));
-        System.out.println(round);
+        int value = grid[0][0];
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                
+            }
+        }
         return 1;
     }
 }
