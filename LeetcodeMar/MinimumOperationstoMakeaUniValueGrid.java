@@ -8,6 +8,8 @@ public class MinimumOperationstoMakeaUniValueGrid {
 
     public static int minOperations(int[][] grid, int x) {
         double remainder = grid[0][0] % x;
+        int n = grid.length;
+        int m = grid[0].length;
         int sum = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -17,6 +19,8 @@ public class MinimumOperationstoMakeaUniValueGrid {
                     return -1;
             }
         }
+        int round = Math.round(sum / (n * m));
+        System.out.println(round);
         return 1;
     }
 }
