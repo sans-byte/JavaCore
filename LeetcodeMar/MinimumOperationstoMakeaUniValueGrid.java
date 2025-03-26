@@ -21,8 +21,19 @@ public class MinimumOperationstoMakeaUniValueGrid {
         }
         int round = Math.round(sum / (n * m));
         int value = grid[0][0];
+        int factor = Math.abs(value - round);
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
+                int fac = Math.abs(grid[i][j] - round);
+                if (fac < factor) {
+                    factor = fac;
+                    value = grid[i][j];
+                }
+            }
+        }
+        System.out.println(value);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 
             }
         }
