@@ -32,11 +32,12 @@ public class MinimumOperationstoMakeaUniValueGrid {
             }
         }
         System.out.println(value);
+        int res = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-
+                res += Math.abs(grid[i][j] - value) / x;
             }
         }
-        return 1;
+        return res;
     }
 }
