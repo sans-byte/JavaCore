@@ -36,7 +36,7 @@ public class NumberOfIslands {
                                 for (int k = 0; k < 4; k++) {
                                     int row = temp[0] + xAxis[k];
                                     int col = temp[1] + yAxis[k];
-                                    if (row >= 0 && row < n && col >= 0 && col < m && visited[row][col] == 0) {
+                                    if (row >= 0 && row < n && col >= 0 && col < m && visited[row][col] == 0 && grid[row][col] == '1') {
                                         q.add(new int[] { row, col });
                                         visited[row][col] = 1;
                                     }
